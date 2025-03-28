@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Normalización y Modelo Relacional</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Normalización y Modelo Relacional</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="lenguajes.html">Lenguajes de Programación</a></li>
+                <li><a href="manejadores.html">Manejadores de Bases de Datos</a></li>
+                <li><a href="referencias.html">Referencias</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <h2>¿Qué es la Normalización?</h2>
+        <p>La **normalización** es un proceso utilizado en el diseño de bases de datos relacionales con el objetivo de organizar los datos de manera eficiente. Su principal propósito es eliminar la redundancia y las dependencias entre los datos para evitar inconsistencias y mejorar la eficiencia del almacenamiento y las consultas.</p>
+
+        <p>Este proceso implica dividir grandes tablas en tablas más pequeñas y eliminar los datos repetitivos. Como resultado, se crea una estructura que minimiza el riesgo de errores y permite una mayor flexibilidad a la hora de modificar los datos.</p>
+
+        <h3>Beneficios de la Normalización</h3>
+        <ul>
+            <li><strong>Reducción de redundancia de datos:</strong> Evita que se repita información innecesaria, lo que ahorra espacio de almacenamiento.</li>
+            <li><strong>Eliminación de dependencias innecesarias:</strong> Asegura que cada pieza de información esté solo en un lugar, lo que facilita la actualización y eliminación de datos.</li>
+            <li><strong>Mejora de la consistencia e integridad:</strong> Al organizar los datos de manera lógica, se reduce la posibilidad de inconsistencias o errores en las relaciones entre los datos.</li>
+        </ul>
+
+        <h3>Proceso de Normalización</h3>
+        <p>El proceso de normalización implica dividir una base de datos en varias tablas relacionadas y aplicar reglas para evitar redundancias. Este proceso se realiza en varias etapas conocidas como **formas normales**. Las formas normales más comunes son:</p>
+
+        <ul>
+            <li><strong>Primera Forma Normal (1FN):</strong> Asegura que cada columna contenga valores atómicos (sin listas o conjuntos de valores) y que cada fila sea única.</li>
+            <li><strong>Segunda Forma Normal (2FN):</strong> Elimina la dependencia parcial, lo que significa que todos los atributos no clave deben depender completamente de la clave primaria.</li>
+            <li><strong>Tercera Forma Normal (3FN):</strong> Elimina las dependencias transitivas, lo que asegura que los atributos no clave no dependan de otros atributos no clave.</li>
+            <li><strong>Cuarta y Quinta Forma Normal (4FN y 5FN):</strong> Estas formas abordan dependencias más complejas, pero son menos comunes en bases de datos prácticas.</li>
+        </ul>
+
+        <h3>Ejemplo de Normalización</h3>
+        <p>Supongamos que tenemos una tabla con los siguientes datos:</p>
+        <pre>
+        | ID | Nombre   | Dirección        | Producto   | Precio |
+        |----|----------|------------------|------------|--------|
+        | 1  | Juan     | Calle Ficticia 1 | Laptop     | 800    |
+        | 2  | María    | Calle Ficticia 2 | Teléfono   | 500    |
+        | 3  | Juan     | Calle Ficticia 1 | Tablet     | 300    |
+        </pre>
+        <p>Para normalizar esta tabla, crearíamos dos tablas separadas: una para clientes y otra para productos, eliminando así la redundancia de la dirección de Juan. El resultado sería algo como:</p>
+        <pre>
+        Tabla Clientes:
+        | ID | Nombre | Dirección        |
+        |----|--------|------------------|
+        | 1  | Juan   | Calle Ficticia 1 |
+        | 2  | María  | Calle Ficticia 2 |
+
+        Tabla Productos:
+        | Cliente_ID | Producto | Precio |
+        |------------|----------|--------|
+        | 1          | Laptop   | 800    |
+        | 2          | Teléfono | 500    |
+        | 1          | Tablet   | 300    |
+        </pre>
+        <p>Ahora, los datos están mejor organizados, y no hay duplicación de la dirección de Juan.</p>
+    </section>
+
+    <section>
+        <h2>¿Qué es el Modelo Relacional?</h2>
+        <p>El **modelo relacional** es un enfoque para estructurar y organizar los datos en una base de datos. Se basa en el concepto de "relaciones" (tablas), que almacenan los datos en forma de filas y columnas. Este modelo fue propuesto por <strong>Edgar F. Codd</strong> en 1970 y es la base de los sistemas de bases de datos relacionales como MySQL, PostgreSQL y Oracle.</p>
+
+        <h3>Características del Modelo Relacional</h3>
+        <ul>
+            <li><strong>Tablas (Relaciones):</strong> Los datos se organizan en tablas, donde cada tabla tiene un nombre único y contiene registros (filas) y atributos (columnas).</li>
+            <li><strong>Claves Primarias:</strong> Cada tabla tiene una clave primaria que identifica de manera única a cada registro.</li>
+            <li><strong>Claves Foráneas:</strong> Las claves foráneas se utilizan para establecer relaciones entre diferentes tablas.</li>
+            <li><strong>Independencia de Datos:</strong> Los usuarios pueden consultar o modificar datos sin conocer la estructura interna de las tablas.</li>
+        </ul>
+
+        <h3>Ventajas del Modelo Relacional</h3>
+        <ul>
+            <li><strong>Facilidad de uso:</strong> La estructura tabular es intuitiva y fácil de comprender.</li>
+            <li><strong>Flexibilidad:</strong> Los cambios en la estructura de los datos no requieren cambios en las aplicaciones que usan los datos.</li>
+            <li><strong>Seguridad:</strong> Las bases de datos relacionales ofrecen mecanismos avanzados de seguridad y control de acceso.</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Lenguajes de Desarrollo de Software</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
